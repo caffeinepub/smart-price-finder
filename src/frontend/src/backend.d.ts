@@ -30,6 +30,11 @@ export interface City {
     name: string;
 }
 export interface backendInterface {
+    addCustomStore(name: string, url: string, city: City, averageShippingTime: bigint, reputationScore: bigint): Promise<bigint>;
     addProduct(store: Store, title: string, price: bigint, productUrl: string, imageUrl: string): Promise<void>;
+    /**
+     * / Initialize hardcoded sellers
+     */
+    initializeSellers(): Promise<void>;
     searchByProductTitle(title: string): Promise<Array<Product>>;
 }

@@ -56,10 +56,18 @@ export interface _SERVICE {
     _CaffeineStorageRefillResult
   >,
   '_caffeineStorageUpdateGatewayPrincipals' : ActorMethod<[], undefined>,
+  'addCustomStore' : ActorMethod<
+    [string, string, City, bigint, bigint],
+    bigint
+  >,
   'addProduct' : ActorMethod<
     [Store, string, bigint, string, string],
     undefined
   >,
+  /**
+   * / Initialize hardcoded sellers
+   */
+  'initializeSellers' : ActorMethod<[], undefined>,
   'searchByProductTitle' : ActorMethod<[string], Array<Product>>,
 }
 export declare const idlService: IDL.ServiceClass;

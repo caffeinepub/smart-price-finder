@@ -7,14 +7,31 @@ import type { Product } from '../backend';
 interface ProductResultsProps {
   products: Product[];
   isLoading: boolean;
+  hasSearched?: boolean;
 }
 
-export default function ProductResults({ products, isLoading }: ProductResultsProps) {
+export default function ProductResults({ products, isLoading, hasSearched = false }: ProductResultsProps) {
+  console.log('ProductResults render:', { productsCount: products.length, isLoading, hasSearched });
+
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center py-16 space-y-4">
         <Loader2 className="w-12 h-12 animate-spin text-blue-500" />
         <p className="text-lg text-muted-foreground">در حال جستجو در فروشگاه‌ها...</p>
+      </div>
+    );
+  }
+
+  if (!hasSearched) {
+    return (
+      <div className="text-center py-16 space-y-4">
+        <div className="w-24 h-24 mx-auto rounded-full bg-muted flex items-center justify-center">
+          <ExternalLink className="w-12 h-12 text-muted-foreground" />
+        </div>
+        <h3 className="text-xl font-semibold">هنوز جستجویی انجام نشده</h3>
+        <p className="text-muted-foreground">
+          نام محصول مورد نظر خود را در کادر بالا وارد کنید
+        </p>
       </div>
     );
   }
@@ -25,9 +42,9 @@ export default function ProductResults({ products, isLoading }: ProductResultsPr
         <div className="w-24 h-24 mx-auto rounded-full bg-muted flex items-center justify-center">
           <ExternalLink className="w-12 h-12 text-muted-foreground" />
         </div>
-        <h3 className="text-xl font-semibold">هنوز جستجویی انجام نشده</h3>
+        <h3 className="text-xl font-semibold">محصولی یافت نشد</h3>
         <p className="text-muted-foreground">
-          نام محصول مورد نظر خود را در کادر بالا وارد کنید
+          لطفاً با کلمات کلیدی دیگری جستجو کنید
         </p>
       </div>
     );

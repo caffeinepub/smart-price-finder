@@ -69,11 +69,17 @@ export const idlService = IDL.Service({
       [],
     ),
   '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
+  'addCustomStore' : IDL.Func(
+      [IDL.Text, IDL.Text, City, IDL.Nat, IDL.Nat],
+      [IDL.Nat],
+      [],
+    ),
   'addProduct' : IDL.Func(
       [Store, IDL.Text, IDL.Nat, IDL.Text, IDL.Text],
       [],
       [],
     ),
+  'initializeSellers' : IDL.Func([], [], []),
   'searchByProductTitle' : IDL.Func([IDL.Text], [IDL.Vec(Product)], ['query']),
 });
 
@@ -138,11 +144,17 @@ export const idlFactory = ({ IDL }) => {
         [],
       ),
     '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
+    'addCustomStore' : IDL.Func(
+        [IDL.Text, IDL.Text, City, IDL.Nat, IDL.Nat],
+        [IDL.Nat],
+        [],
+      ),
     'addProduct' : IDL.Func(
         [Store, IDL.Text, IDL.Nat, IDL.Text, IDL.Text],
         [],
         [],
       ),
+    'initializeSellers' : IDL.Func([], [], []),
     'searchByProductTitle' : IDL.Func(
         [IDL.Text],
         [IDL.Vec(Product)],

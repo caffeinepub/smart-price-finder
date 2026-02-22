@@ -6,7 +6,9 @@ import Order "mo:core/Order";
 import Iter "mo:core/Iter";
 import Runtime "mo:core/Runtime";
 import MixinStorage "blob-storage/Mixin";
+import Migration "migration";
 
+(with migration = Migration.run)
 actor {
   include MixinStorage();
 
@@ -35,8 +37,6 @@ actor {
     averageShippingTime : Nat; // in days
     reputationScore : Nat; // 1-5
   };
-
-  type Sellers = Map.Map<Nat, Store>;
 
   type City = {
     name : Text;
@@ -80,7 +80,6 @@ actor {
           imageUrl;
         };
         products.add(0, product);
-
       };
       case (?products) { Runtime.trap("Product already exists") };
     };
@@ -92,6 +91,73 @@ actor {
       func(product) { product.title.contains(#text title) }
     );
     results;
+  };
+
+  // Custom store management
+  var nextStoreId = 4; // Start after hardcoded sellers
+
+  let sellers = Map.empty<Nat, Store>();
+
+  /// Initialize hardcoded sellers
+  public shared ({ caller }) func initializeSellers() : async () {
+    sellers.add(
+      1,
+      {
+        id = 1;
+        url = "https://www.digikala.com/";
+        city = City.get("Tehran");
+        name = "Digikala";
+        averageShippingTime = 2;
+        reputationScore = 5;
+      },
+    );
+
+    sellers.add(
+      2,
+      {
+        id = 2;
+        url = "https://www.bamilo.com/";
+        city = City.get("Tehran");
+        name = "Bamilo";
+        averageShippingTime = 3;
+        reputationScore = 4;
+      },
+    );
+
+    sellers.add(
+      3,
+      {
+        id = 3;
+        url = "https://www.hiper.com/";
+        city = City.get("Qom");
+        name = "Hiper";
+        averageShippingTime = 1;
+        reputationScore = 3;
+      },
+    );
+  };
+
+  // Add custom store
+  public shared ({ caller }) func addCustomStore(
+    name : Text,
+    url : Text,
+    city : City,
+    averageShippingTime : Nat,
+    reputationScore : Nat,
+  ) : async Nat {
+    let storeId = nextStoreId;
+    let newStore : Store = {
+      id = storeId;
+      name;
+      url;
+      city;
+      averageShippingTime;
+      reputationScore;
+    };
+    sellers.add(storeId, newStore);
+    nextStoreId += 1;
+
+    storeId;
   };
 
   // Available city list
@@ -111,42 +177,4 @@ actor {
     { name = "Sari"; proximityToQom = 5 },
     { name = "Hamedan"; proximityToQom = 5 },
   ]);
-
-  let sellers : Sellers = Map.empty<Nat, Store>();
-
-  sellers.add(
-    1,
-    {
-      id = 1;
-      url = "https://www.digikala.com/";
-      city = City.get("Tehran");
-      name = "Digikala";
-      averageShippingTime = 2;
-      reputationScore = 5;
-    },
-  );
-
-  sellers.add(
-    2,
-    {
-      id = 2;
-      url = "https://www.bamilo.com/";
-      city = City.get("Tehran");
-      name = "Bamilo";
-      averageShippingTime = 3;
-      reputationScore = 4;
-    },
-  );
-
-  sellers.add(
-    3,
-    {
-      id = 3;
-      url = "https://www.hiper.com/";
-      city = City.get("Qom");
-      name = "Hiper";
-      averageShippingTime = 1;
-      reputationScore = 3;
-    },
-  );
 };

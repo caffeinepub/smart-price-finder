@@ -1,152 +1,133 @@
 {
   "kind": "build_request",
-  "title": "Test application and fix identified issues",
+  "title": "Fix search functionality and add comprehensive store management form",
+  "projectName": "Persian Shop Finder",
   "priority": "high",
   "requirements": [
     {
-      "id": "REQ-5",
-      "text": "Test the searchByProductTitle functionality in the backend with various Persian product queries (e.g., 'گوشی موبایل', 'لپ‌تاپ', 'کتاب') and verify that results are returned with correct title, price, store name, and city information",
+      "id": "REQ-13",
+      "text": "Debug and fix the search functionality to ensure that when users click the search button or press Enter after typing a Persian product query (e.g., 'گوشی', 'لپ‌تاپ'), the system displays product results instead of showing the 'هنوز جستجویی انجام نشده' message. Verify the complete flow from SearchInput component through useProductSearch hook to the backend searchByProductTitle function.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-5",
+          "msg-7"
+        ],
+        "quotes": [
+          "علت عدم نمایش نتیجه بعد از فشردن کلید جستجو چیه؟",
+          "همه جستجوها.خیر\nنام محصول مورد نظر خود را در کادر بالا وارد کنید"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Typing a Persian product name and clicking search triggers the backend searchByProductTitle function",
+        "Product results are displayed in the ProductResults component after successful search",
+        "The 'هنوز جستجویی انجام نشده' message only appears before the first search, not after clicking search",
+        "Loading state is properly shown during search execution",
+        "Error handling displays appropriate messages if search fails"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Analyze and test the complete search flow in both frontend and backend to identify why search results are not displaying. Check: 1) SearchInput component properly calls the search handler, 2) useProductSearch hook correctly invokes the actor method, 3) backend searchByProductTitle function processes the query and returns results, 4) ProductResults component receives and renders the returned data.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-9"
+        ],
+        "quotes": [
+          "1-هردو را انالیز وتست کن2-پیدا کردن مشکل و رفع ان و تصحیح و بهبود عملکرد جستجو"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All console errors related to search are identified and logged",
+        "Network requests to the backend are verified in browser DevTools",
+        "Backend function execution is verified to return expected product data",
+        "Data flow from backend response to ProductResults rendering is confirmed",
+        "Any identified issues are fixed to restore full search functionality"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Enhance the StoreManagement component to create a comprehensive form that collects all information required by the search engine from users who want to add their stores. The form must include fields for: store name (Persian), store URL/link, city selection (from existing Iranian cities dropdown), reputation score (1-5 stars), and any additional metadata needed for search ranking and product discovery.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-11",
+          "msg-13"
+        ],
+        "quotes": [
+          "کاربران در منو گزینه ای بنام افزودن فروشگاه خود را میزنن و همه محتوای مورد نیاز موتور جستجو را از انها درخواست و ذخیره کن",
+          "نام فروشگاه (فارسی)\n- لینک/URL فروشگاه\n- شهر محل فروشگاه (برای رتبه‌بندی نزدیکی به قم/تهران)\n- امتیاز اعتبار فروشگاه\n- سایر اطلاعات مورد نیاز برای جستجو و مقایسه"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Form includes labeled input field for Persian store name with RTL support",
+        "Form includes URL input field with validation for proper web addresses",
+        "City dropdown shows all Iranian cities from the existing city list",
+        "Reputation score selector allows choosing 1-5 stars with visual star display",
+        "Form validation prevents submission with empty required fields",
+        "All form fields display proper Persian labels and placeholders",
+        "Form maintains blue neon styling consistent with the app theme"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Update the backend to support persistent storage of user-submitted stores with all required fields: store name, URL, city, reputation score, and any additional metadata. Ensure the addCustomStore function (or equivalent) saves this data to stable storage and makes it available for future search queries.",
       "target": "backend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-11",
+          "msg-13"
+        ],
+        "quotes": [
+          "همه محتوای مورد نیاز موتور جستجو را از انها درخواست و ذخیره کن",
+          "ذخیره‌سازی دائمی**: تمام فروشگاه‌های اضافه شده در بک‌اند ذخیره و در جستجوهای بعدی استفاده می‌شوند"
         ]
       },
       "acceptanceCriteria": [
-        "Backend returns valid Product[] array for Persian search queries",
-        "Each product contains non-empty title, price > 0, storeName, and valid city",
-        "Search handles special Persian characters correctly"
+        "Backend function accepts all store fields: name, URL, city, reputation score",
+        "Store data is persisted in stable storage across canister upgrades",
+        "Newly added stores are included in searchByProductTitle results",
+        "Backend validates store data before saving (e.g., non-empty name, valid URL format)",
+        "Function returns success/failure status to frontend for user feedback"
       ]
     },
     {
-      "id": "REQ-6",
-      "text": "Test the frontend SearchInput component to ensure text input accepts Persian characters correctly and triggers search when clicking the search button or pressing Enter",
-      "target": "frontend",
+      "id": "REQ-17",
+      "text": "Connect the enhanced StoreManagement form to the backend by implementing the submission handler that calls the backend addCustomStore function with all collected form data. Display success toast notification in Persian when store is added successfully, and error toast if submission fails. Clear the form fields after successful submission.",
+      "target": "both",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-13"
+        ],
+        "quotes": [
+          "ذخیره‌سازی دائمی**: تمام فروشگاه‌های اضافه شده در بک‌اند ذخیره و در جستجوهای بعدی استفاده می‌شوند"
         ]
       },
       "acceptanceCriteria": [
-        "Text input field accepts and displays Persian characters properly",
-        "Search triggers on Enter key press",
-        "Search triggers on button click",
-        "Loading state appears during search execution"
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "text": "Test the ProductResults component to verify that search results display correctly with product images, Persian titles, prices in Toman, store names, city badges, reputation stars, and clickable external links",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ]
-      },
-      "acceptanceCriteria": [
-        "All product cards render with correct layout in RTL direction",
-        "Product images display or show placeholder on load failure",
-        "Prices format correctly with Persian numerals and 'تومان' suffix",
-        "External links open in new tabs",
-        "Empty state shows when no results found"
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "text": "Test the StoreManagement component to ensure users can add new stores with Persian names and URLs, select Iranian cities from the dropdown, set reputation scores, and delete added stores",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Form accepts Persian store names",
-        "URL validation works correctly",
-        "City dropdown displays all Iranian cities",
-        "Reputation slider updates value display",
-        "New stores appear in the list after submission",
-        "Delete button removes stores from the list"
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "text": "Fix any RTL layout issues in the UI where text alignment, spacing, or component positioning does not correctly support right-to-left Persian content",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ]
-      },
-      "acceptanceCriteria": [
-        "All text aligns to the right by default",
-        "Icons and buttons position correctly for RTL",
-        "Margins and paddings respect RTL direction",
-        "Grid layouts flow right-to-left"
-      ]
-    },
-    {
-      "id": "REQ-10",
-      "text": "Fix any issues with the blue neon styling theme to ensure consistent application across all interactive elements including buttons, input fields, cards, and hover states",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Blue neon glow effects appear on focus and hover states",
-        "Color consistency matches the defined OKLCH color scheme",
-        "Shadow effects render correctly in both light and dark modes",
-        "No style conflicts or missing CSS variables"
-      ]
-    },
-    {
-      "id": "REQ-11",
-      "text": "Verify that the image upload functionality in SearchInput displays the upload button icon correctly and shows a preview when an image is selected, even though image-based search is not yet implemented in the backend",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Image upload icon renders and is clickable",
-        "File input accepts image files only",
-        "Image preview displays after file selection",
-        "User receives appropriate feedback that image search will be available in future updates"
-      ]
-    },
-    {
-      "id": "REQ-12",
-      "text": "Test navigation between Search view and Store Management view using the header buttons to ensure smooth transitions and state preservation",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Clicking 'جستجو' button shows SearchInput and ProductResults components",
-        "Clicking 'مدیریت فروشگاه‌ها' button shows StoreManagement component",
-        "Active view button has distinct visual styling",
-        "Previous search results persist when switching back to search view"
+        "Form submission triggers backend addCustomStore call with all form data",
+        "Success toast displays Persian message confirming store was added",
+        "Error toast displays Persian message if backend call fails",
+        "Form fields are cleared after successful submission",
+        "Loading state is shown during submission process",
+        "Newly added store appears in the store list immediately after successful submission"
       ]
     }
   ],
   "constraints": [
-    "Do not modify the backend/main.mo actor structure",
-    "Do not edit read-only paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui",
-    "Keep all Motoko logic in the single main actor file",
-    "Maintain Persian language for all UI text",
-    "Preserve blue neon design theme"
+    "Do not modify frontend/src/hooks/useInternetIdentity.ts or frontend/src/hooks/useActor.ts",
+    "Do not modify frontend/src/main.tsx",
+    "Do not edit UI component sources in frontend/src/components/ui",
+    "Maintain single-actor architecture in backend/main.mo",
+    "Preserve all existing Persian/RTL text support and blue neon styling theme",
+    "Keep existing Store type structure and city data in the backend"
   ],
   "nonGoals": [
-    "Implementing actual image-based search functionality in backend",
-    "Integrating real API connections to Iranian stores",
-    "Adding authentication or user accounts",
-    "Implementing search history persistence",
-    "Adding sorting or filtering controls for search results"
+    "Automatic daily data updates from external store APIs",
+    "Web scraping functionality to fetch real-time product data",
+    "Integration with external services for automatic product discovery",
+    "Changes to the existing Header, Footer, or ProductResults components",
+    "Modifications to authentication or identity management logic"
   ],
   "imageRequirements": {
     "required": [],

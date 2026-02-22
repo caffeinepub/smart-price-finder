@@ -1,132 +1,96 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-22T08:21:05.613Z",
+  "generatedAt": "2026-02-22T08:40:04.990Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 8,
-    "implemented": 7,
+    "total": 5,
+    "implemented": 4,
     "items": [
       {
-        "id": "REQ-10",
-        "summary": "Fix any issues with the blue neon styling theme to ensure consistent application across all interactive elements including buttons, input fields, cards, and hover states",
+        "id": "REQ-13",
+        "summary": "Debug and fix the search functionality to ensure that when users click the search button or press Enter after typing a Persian product query (e.g., 'گوشی', 'لپ‌تاپ'), the system displays product results instead of showing the 'هنوز جستجویی انجام نشده' message. Verify the complete flow from SearchInput component through useProductSearch hook to the backend searchByProductTitle function.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
           "frontend/src/components/SearchInput.tsx",
+          "frontend/src/hooks/useProductSearch.ts",
           "frontend/src/components/ProductResults.tsx",
-          "frontend/src/components/StoreManagement.tsx",
-          "frontend/src/components/Header.tsx"
+          "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
           "frontend/src/components/SearchInput.tsx",
+          "frontend/src/hooks/useProductSearch.ts",
           "frontend/src/components/ProductResults.tsx",
-          "frontend/src/components/StoreManagement.tsx",
-          "frontend/src/components/Header.tsx"
+          "frontend/src/App.tsx"
         ]
       },
       {
-        "id": "REQ-11",
-        "summary": "Verify that the image upload functionality in SearchInput displays the upload button icon correctly and shows a preview when an image is selected, even though image-based search is not yet implemented in the backend",
+        "id": "REQ-14",
+        "summary": "Analyze and test the complete search flow in both frontend and backend to identify why search results are not displaying. Check: 1) SearchInput component properly calls the search handler, 2) useProductSearch hook correctly invokes the actor method, 3) backend searchByProductTitle function processes the query and returns results, 4) ProductResults component receives and renders the returned data.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/SearchInput.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/SearchInput.tsx"
-        ]
-      },
-      {
-        "id": "REQ-12",
-        "summary": "Test navigation between Search view and Store Management view using the header buttons to ensure smooth transitions and state preservation",
-        "status": "implemented",
-        "plannedFiles": [
+          "frontend/src/components/SearchInput.tsx",
+          "frontend/src/hooks/useProductSearch.ts",
           "frontend/src/App.tsx",
-          "frontend/src/components/Header.tsx"
+          "frontend/src/components/ProductResults.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/Header.tsx"
+          "frontend/src/components/SearchInput.tsx",
+          "frontend/src/hooks/useProductSearch.ts",
+          "frontend/src/App.tsx",
+          "frontend/src/components/ProductResults.tsx"
         ]
       },
       {
-        "id": "REQ-5",
-        "summary": "Test the searchByProductTitle functionality in the backend with various Persian product queries (e.g., 'گوشی موبایل', 'لپ‌تاپ', 'کتاب') and verify that results are returned with correct title, price, store name, and city information",
+        "id": "REQ-15",
+        "summary": "Enhance the StoreManagement component to create a comprehensive form that collects all information required by the search engine from users who want to add their stores. The form must include fields for: store name (Persian), store URL/link, city selection (from existing Iranian cities dropdown), reputation score (1-5 stars), and any additional metadata needed for search ranking and product discovery.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/StoreManagement.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/StoreManagement.tsx"
+        ]
+      },
+      {
+        "id": "REQ-16",
+        "summary": "Update the backend to support persistent storage of user-submitted stores with all required fields: store name, URL, city, reputation score, and any additional metadata. Ensure the addCustomStore function (or equivalent) saves this data to stable storage and makes it available for future search queries.",
         "status": "unknown",
         "plannedFiles": [],
         "matchedFiles": []
       },
       {
-        "id": "REQ-6",
-        "summary": "Test the frontend SearchInput component to ensure text input accepts Persian characters correctly and triggers search when clicking the search button or pressing Enter",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/SearchInput.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/SearchInput.tsx"
-        ]
-      },
-      {
-        "id": "REQ-7",
-        "summary": "Test the ProductResults component to verify that search results display correctly with product images, Persian titles, prices in Toman, store names, city badges, reputation stars, and clickable external links",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/ProductResults.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/ProductResults.tsx"
-        ]
-      },
-      {
-        "id": "REQ-8",
-        "summary": "Test the StoreManagement component to ensure users can add new stores with Persian names and URLs, select Iranian cities from the dropdown, set reputation scores, and delete added stores",
+        "id": "REQ-17",
+        "summary": "Connect the enhanced StoreManagement form to the backend by implementing the submission handler that calls the backend addCustomStore function with all collected form data. Display success toast notification in Persian when store is added successfully, and error toast if submission fails. Clear the form fields after successful submission.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/components/StoreManagement.tsx"
         ],
         "matchedFiles": [
           "frontend/src/components/StoreManagement.tsx"
-        ]
-      },
-      {
-        "id": "REQ-9",
-        "summary": "Fix any RTL layout issues in the UI where text alignment, spacing, or component positioning does not correctly support right-to-left Persian content",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/SearchInput.tsx",
-          "frontend/src/components/ProductResults.tsx",
-          "frontend/src/components/StoreManagement.tsx",
-          "frontend/src/components/Header.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/SearchInput.tsx",
-          "frontend/src/components/ProductResults.tsx",
-          "frontend/src/components/StoreManagement.tsx",
-          "frontend/src/components/Header.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/Header.tsx",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
     "frontend/src/components/ProductResults.tsx",
     "frontend/src/components/SearchInput.tsx",
     "frontend/src/components/StoreManagement.tsx",
-    "frontend/src/index.css",
-    "frontend/tailwind.config.js",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useProductSearch.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

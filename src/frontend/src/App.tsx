@@ -17,6 +17,23 @@ function AppContent() {
   const [currentView, setCurrentView] = useState<View>('search');
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
+
+  const handleSearchResults = (results: Product[]) => {
+    console.log('App received search results:', results);
+    setSearchResults(results);
+    setHasSearched(true);
+  };
+
+  const handleSearchStart = () => {
+    console.log('Search started');
+    setIsSearching(true);
+  };
+
+  const handleSearchEnd = () => {
+    console.log('Search ended');
+    setIsSearching(false);
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-background via-background to-accent/5" dir="rtl">
@@ -35,14 +52,15 @@ function AppContent() {
             </div>
 
             <SearchInput 
-              onSearchResults={setSearchResults}
-              onSearchStart={() => setIsSearching(true)}
-              onSearchEnd={() => setIsSearching(false)}
+              onSearchResults={handleSearchResults}
+              onSearchStart={handleSearchStart}
+              onSearchEnd={handleSearchEnd}
             />
 
             <ProductResults 
               products={searchResults} 
               isLoading={isSearching}
+              hasSearched={hasSearched}
             />
           </div>
         ) : (

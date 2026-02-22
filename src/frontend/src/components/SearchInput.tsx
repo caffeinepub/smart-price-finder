@@ -28,9 +28,13 @@ export default function SearchInput({ onSearchResults, onSearchStart, onSearchEn
       return;
     }
 
+    console.log('Starting search for:', searchText);
     onSearchStart();
+    
     try {
       const results = await searchByText(searchText);
+      console.log('Search completed, results:', results);
+      
       onSearchResults(results);
       
       if (results.length === 0) {
@@ -39,8 +43,9 @@ export default function SearchInput({ onSearchResults, onSearchStart, onSearchEn
         toast.success(`${results.length} محصول یافت شد`);
       }
     } catch (error) {
-      toast.error('خطا در جستجو. لطفاً دوباره تلاش کنید.');
       console.error('Search error:', error);
+      toast.error('خطا در جستجو. لطفاً دوباره تلاش کنید.');
+      onSearchResults([]);
     } finally {
       onSearchEnd();
     }

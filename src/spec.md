@@ -1,16 +1,14 @@
 # Specification
 
 ## Summary
-**Goal:** Test the Persian product search application and fix any identified issues with RTL layout, blue neon styling, and component functionality.
+**Goal:** Fix the broken search functionality and add a comprehensive form for users to submit their stores with all required information.
 
 **Planned changes:**
-- Test backend searchByProductTitle with various Persian product queries
-- Test frontend SearchInput component for Persian character input and search triggering
-- Test ProductResults component for correct display of search results with Persian text and RTL layout
-- Test StoreManagement component for adding/deleting stores with Persian names
-- Fix any RTL layout issues affecting text alignment, spacing, and component positioning
-- Fix blue neon styling inconsistencies across interactive elements
-- Verify image upload UI displays correctly (preview functionality only)
-- Test navigation between Search and Store Management views
+- Debug and fix the search flow so clicking search or pressing Enter displays product results instead of the "هنوز جستجویی انجام نشده" message
+- Analyze the complete search path from SearchInput component through useProductSearch hook to backend searchByProductTitle function
+- Enhance StoreManagement component with a comprehensive form including: Persian store name, store URL, city dropdown, reputation score (1-5 stars), and additional metadata fields
+- Update backend to persistently store user-submitted stores with all fields in stable storage
+- Connect the form submission to backend addCustomStore function with success/error toast notifications in Persian
+- Clear form fields after successful submission
 
-**User-visible outcome:** Users will experience a fully functional Persian product search application with proper RTL support, consistent blue neon styling, working search and store management features, and smooth navigation between views.
+**User-visible outcome:** Users can successfully search for Persian product names and see results. Users can add their stores through a detailed form in the "افزودن فروشگاه" menu option, and their stores will be saved and appear in future searches.

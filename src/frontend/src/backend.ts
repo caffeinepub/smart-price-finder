@@ -129,7 +129,12 @@ export interface backendInterface {
     _caffeineStorageCreateCertificate(blobHash: string): Promise<_CaffeineStorageCreateCertificateResult>;
     _caffeineStorageRefillCashier(refillInformation: _CaffeineStorageRefillInformation | null): Promise<_CaffeineStorageRefillResult>;
     _caffeineStorageUpdateGatewayPrincipals(): Promise<void>;
+    addCustomStore(name: string, url: string, city: City, averageShippingTime: bigint, reputationScore: bigint): Promise<bigint>;
     addProduct(store: Store, title: string, price: bigint, productUrl: string, imageUrl: string): Promise<void>;
+    /**
+     * / Initialize hardcoded sellers
+     */
+    initializeSellers(): Promise<void>;
     searchByProductTitle(title: string): Promise<Array<Product>>;
 }
 import type { _CaffeineStorageRefillInformation as __CaffeineStorageRefillInformation, _CaffeineStorageRefillResult as __CaffeineStorageRefillResult } from "./declarations/backend.did.d.ts";
@@ -219,6 +224,20 @@ export class Backend implements backendInterface {
             return result;
         }
     }
+    async addCustomStore(arg0: string, arg1: string, arg2: City, arg3: bigint, arg4: bigint): Promise<bigint> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.addCustomStore(arg0, arg1, arg2, arg3, arg4);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.addCustomStore(arg0, arg1, arg2, arg3, arg4);
+            return result;
+        }
+    }
     async addProduct(arg0: Store, arg1: string, arg2: bigint, arg3: string, arg4: string): Promise<void> {
         if (this.processError) {
             try {
@@ -230,6 +249,20 @@ export class Backend implements backendInterface {
             }
         } else {
             const result = await this.actor.addProduct(arg0, arg1, arg2, arg3, arg4);
+            return result;
+        }
+    }
+    async initializeSellers(): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.initializeSellers();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.initializeSellers();
             return result;
         }
     }

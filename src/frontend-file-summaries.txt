@@ -1,11 +1,11 @@
 {
-  "frontend/src/App.tsx": "Main application component with view switching between search and store management, integrating ThemeProvider for dark mode support and managing search state.",
+  "frontend/src/App.tsx": "Main application component with view switching between search and store management, managing search state with hasSearched flag to distinguish between no search and empty results.",
   "frontend/src/components/Header.tsx": "Navigation header with view switching buttons featuring enhanced blue neon active states, proper RTL layout, and smooth transition effects.",
   "frontend/src/components/Footer.tsx": "Footer component with copyright information and attribution link to caffeine.ai with proper UTM tracking parameters.",
-  "frontend/src/components/SearchInput.tsx": "Search input card with Persian text support, image upload with tooltip notification, blue neon focus/hover states, Enter key handling, and RTL-optimized layout.",
-  "frontend/src/components/ProductResults.tsx": "Product results grid with RTL-aligned cards, blue neon hover effects, Persian price formatting, proper image fallbacks, and enhanced visual hierarchy for RTL reading.",
-  "frontend/src/components/StoreManagement.tsx": "Store management interface with RTL-optimized form layout, blue neon styling on inputs and buttons, Persian city dropdown, and proper right-aligned text throughout.",
-  "frontend/src/hooks/useProductSearch.ts": "Custom React hook for handling product search operations by calling the backend searchByProductTitle method with loading state management.",
+  "frontend/src/components/SearchInput.tsx": "Search input card with Persian text support, image upload placeholder, comprehensive error handling and console logging for debugging search flow.",
+  "frontend/src/components/ProductResults.tsx": "Product results grid with RTL-aligned cards, distinguishing between no search performed, search in progress, and empty results states with proper Persian messaging.",
+  "frontend/src/components/StoreManagement.tsx": "Store management interface with comprehensive form for adding stores to backend including name, URL, city, reputation score, and shipping time fields, with backend integration via actor.addCustomStore and automatic seller initialization.",
+  "frontend/src/hooks/useProductSearch.ts": "Custom React hook for product search operations with detailed console logging to track backend actor calls and responses.",
   "frontend/src/index.css": "Global styles with OKLCH color system for blue/cyan neon theme, Persian font (Vazirmatn), RTL support, and custom neon glow utilities for interactive elements.",
   "frontend/tailwind.config.js": "Tailwind configuration with Persian font family, blue-themed OKLCH colors, enhanced neon shadow utilities (blue/cyan variants), and pulse-glow animation for interactive states."
 }
