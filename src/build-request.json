@@ -1,0 +1,155 @@
+{
+  "kind": "build_request",
+  "title": "Test application and fix identified issues",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-5",
+      "text": "Test the searchByProductTitle functionality in the backend with various Persian product queries (e.g., 'گوشی موبایل', 'لپ‌تاپ', 'کتاب') and verify that results are returned with correct title, price, store name, and city information",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend returns valid Product[] array for Persian search queries",
+        "Each product contains non-empty title, price > 0, storeName, and valid city",
+        "Search handles special Persian characters correctly"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Test the frontend SearchInput component to ensure text input accepts Persian characters correctly and triggers search when clicking the search button or pressing Enter",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Text input field accepts and displays Persian characters properly",
+        "Search triggers on Enter key press",
+        "Search triggers on button click",
+        "Loading state appears during search execution"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Test the ProductResults component to verify that search results display correctly with product images, Persian titles, prices in Toman, store names, city badges, reputation stars, and clickable external links",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All product cards render with correct layout in RTL direction",
+        "Product images display or show placeholder on load failure",
+        "Prices format correctly with Persian numerals and 'تومان' suffix",
+        "External links open in new tabs",
+        "Empty state shows when no results found"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Test the StoreManagement component to ensure users can add new stores with Persian names and URLs, select Iranian cities from the dropdown, set reputation scores, and delete added stores",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Form accepts Persian store names",
+        "URL validation works correctly",
+        "City dropdown displays all Iranian cities",
+        "Reputation slider updates value display",
+        "New stores appear in the list after submission",
+        "Delete button removes stores from the list"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Fix any RTL layout issues in the UI where text alignment, spacing, or component positioning does not correctly support right-to-left Persian content",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All text aligns to the right by default",
+        "Icons and buttons position correctly for RTL",
+        "Margins and paddings respect RTL direction",
+        "Grid layouts flow right-to-left"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Fix any issues with the blue neon styling theme to ensure consistent application across all interactive elements including buttons, input fields, cards, and hover states",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Blue neon glow effects appear on focus and hover states",
+        "Color consistency matches the defined OKLCH color scheme",
+        "Shadow effects render correctly in both light and dark modes",
+        "No style conflicts or missing CSS variables"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Verify that the image upload functionality in SearchInput displays the upload button icon correctly and shows a preview when an image is selected, even though image-based search is not yet implemented in the backend",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Image upload icon renders and is clickable",
+        "File input accepts image files only",
+        "Image preview displays after file selection",
+        "User receives appropriate feedback that image search will be available in future updates"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Test navigation between Search view and Store Management view using the header buttons to ensure smooth transitions and state preservation",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking 'جستجو' button shows SearchInput and ProductResults components",
+        "Clicking 'مدیریت فروشگاه‌ها' button shows StoreManagement component",
+        "Active view button has distinct visual styling",
+        "Previous search results persist when switching back to search view"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify the backend/main.mo actor structure",
+    "Do not edit read-only paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui",
+    "Keep all Motoko logic in the single main actor file",
+    "Maintain Persian language for all UI text",
+    "Preserve blue neon design theme"
+  ],
+  "nonGoals": [
+    "Implementing actual image-based search functionality in backend",
+    "Integrating real API connections to Iranian stores",
+    "Adding authentication or user accounts",
+    "Implementing search history persistence",
+    "Adding sorting or filtering controls for search results"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

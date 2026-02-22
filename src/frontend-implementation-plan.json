@@ -1,0 +1,179 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Test application and fix identified frontend issues",
+  "requirements": [
+    {
+      "id": "REQ-6",
+      "summary": "Test SearchInput component for Persian character input and search triggering",
+      "acceptanceCriteria": [
+        "Text input field accepts and displays Persian characters properly",
+        "Search triggers on Enter key press",
+        "Search triggers on button click",
+        "Loading state appears during search execution"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SearchInput.tsx",
+          "operation": "modify",
+          "description": "Add manual testing verification points and ensure Persian character support is correctly implemented. Verify the onKeyDown handler properly detects Enter key (event.key === 'Enter'), confirm handleSearch is called on button click, and validate that isLoading state from useProductSearch displays appropriate feedback during search execution."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Test ProductResults component for correct display of search results with Persian content",
+      "acceptanceCriteria": [
+        "All product cards render with correct layout in RTL direction",
+        "Product images display or show placeholder on load failure",
+        "Prices format correctly with Persian numerals and 'تومان' suffix",
+        "External links open in new tabs",
+        "Empty state shows when no results found"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProductResults.tsx",
+          "operation": "modify",
+          "description": "Add manual testing verification points and ensure RTL layout is applied via dir='rtl', verify image onError handler provides fallback placeholder, confirm price formatting uses toLocaleString('fa-IR') with 'تومان' suffix, validate external links have target='_blank' and rel='noopener noreferrer', and check empty state rendering when products array is empty."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Test StoreManagement component for adding and deleting stores with Persian input",
+      "acceptanceCriteria": [
+        "Form accepts Persian store names",
+        "URL validation works correctly",
+        "City dropdown displays all Iranian cities",
+        "Reputation slider updates value display",
+        "New stores appear in the list after submission",
+        "Delete button removes stores from the list"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/StoreManagement.tsx",
+          "operation": "modify",
+          "description": "Add manual testing verification points and ensure form inputs accept Persian characters, validate URL format checking, confirm all Iranian cities appear in the dropdown with correct proximity values, verify reputation slider value updates display in real-time, check new stores are added to the stores state array and rendered, and validate delete functionality removes stores from the list."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Fix RTL layout issues for proper Persian content display",
+      "acceptanceCriteria": [
+        "All text aligns to the right by default",
+        "Icons and buttons position correctly for RTL",
+        "Margins and paddings respect RTL direction",
+        "Grid layouts flow right-to-left"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Review and fix RTL styling to ensure consistent right-to-left layout. Verify html dir='rtl' is set, add text-align: right utilities where needed, ensure flex and grid layouts respect RTL direction, and adjust any hardcoded left/right margins or paddings to use logical properties or RTL-aware Tailwind utilities."
+        },
+        {
+          "path": "frontend/src/components/SearchInput.tsx",
+          "operation": "modify",
+          "description": "Fix RTL layout issues in search input component. Ensure input text aligns right, position the search button appropriately for RTL, verify icon placement respects RTL direction, and adjust any left/right spacing to use logical properties."
+        },
+        {
+          "path": "frontend/src/components/ProductResults.tsx",
+          "operation": "modify",
+          "description": "Fix RTL layout issues in product cards. Ensure product grid flows right-to-left, text content aligns to the right, icons and badges position correctly for RTL, and adjust any directional spacing or positioning."
+        },
+        {
+          "path": "frontend/src/components/StoreManagement.tsx",
+          "operation": "modify",
+          "description": "Fix RTL layout issues in store management form and list. Ensure form labels and inputs align right, buttons position correctly for RTL, and the store list items display with proper RTL flow."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Fix RTL layout issues in header navigation. Ensure logo and navigation buttons position correctly for RTL, adjust spacing to respect right-to-left flow, and verify button order makes sense in RTL context."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Fix blue neon styling theme consistency across interactive elements",
+      "acceptanceCriteria": [
+        "Blue neon glow effects appear on focus and hover states",
+        "Color consistency matches the defined OKLCH color scheme",
+        "Shadow effects render correctly in both light and dark modes",
+        "No style conflicts or missing CSS variables"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Review and fix blue neon theme consistency. Ensure all CSS custom properties for blue neon colors are defined correctly in both light and dark mode, verify shadow effects use the neon shadow utilities from tailwind.config.js, add missing focus and hover states with blue glow effects, and eliminate any color or shadow conflicts."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Review and enhance Tailwind configuration for blue neon theme. Verify custom shadow definitions include neon glow variants, ensure OKLCH color values are consistent, add any missing shadow or color utilities needed for interactive states, and confirm theme colors work correctly in both light and dark modes."
+        },
+        {
+          "path": "frontend/src/components/SearchInput.tsx",
+          "operation": "modify",
+          "description": "Apply blue neon styling consistently to search input and buttons. Add focus states with blue glow effects, ensure hover states trigger neon shadows, verify color usage matches the OKLCH theme variables, and apply consistent styling to the image upload button."
+        },
+        {
+          "path": "frontend/src/components/ProductResults.tsx",
+          "operation": "modify",
+          "description": "Apply blue neon styling consistently to product cards and interactive elements. Add hover states with blue glow effects to cards, ensure buttons and links have consistent neon styling, verify color scheme matches theme variables, and add appropriate shadow effects."
+        },
+        {
+          "path": "frontend/src/components/StoreManagement.tsx",
+          "operation": "modify",
+          "description": "Apply blue neon styling consistently to form inputs and buttons. Add focus states with blue glow to input fields, ensure buttons have hover states with neon shadows, verify dropdown and slider styling matches the theme, and apply consistent color scheme throughout."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Apply blue neon styling consistently to header navigation buttons. Add hover and active states with blue glow effects, ensure selected view button has distinct neon styling, and verify color consistency with the theme."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Verify image upload functionality displays correctly with future implementation notice",
+      "acceptanceCriteria": [
+        "Image upload icon renders and is clickable",
+        "File input accepts image files only",
+        "Image preview displays after file selection",
+        "User receives appropriate feedback that image search will be available in future updates"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SearchInput.tsx",
+          "operation": "modify",
+          "description": "Add manual testing verification for image upload UI and enhance user feedback. Verify the image upload button icon is visible and clickable, confirm file input accept attribute restricts to image types, ensure selected image preview displays correctly, and add a tooltip or notification informing users that image-based search functionality will be available in future updates."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Test navigation between Search and Store Management views",
+      "acceptanceCriteria": [
+        "Clicking 'جستجو' button shows SearchInput and ProductResults components",
+        "Clicking 'مدیریت فروشگاه‌ها' button shows StoreManagement component",
+        "Active view button has distinct visual styling",
+        "Previous search results persist when switching back to search view"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add manual testing verification for view navigation and state persistence. Verify currentView state toggles correctly between 'search' and 'stores', confirm SearchInput and ProductResults render when currentView is 'search', validate StoreManagement renders when currentView is 'stores', ensure searchResults state persists when switching views, and verify the view state is passed to Header for active button styling."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Add manual testing verification for navigation button styling. Verify active view button receives distinct visual styling (different background, border, or glow effect), confirm onClick handlers correctly call onViewChange with appropriate view value, and ensure button states visually indicate the current active view."
+        }
+      ]
+    }
+  ]
+}

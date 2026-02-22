@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Persian-language intelligent shopping search engine that finds and compares products from Iranian online stores (Digikala, Bamilo, etc.) with automatic discovery and manual link addition. Accepts text and image input, ranks results by: 1) lowest price, 2) proximity to Qom/Tehran, 3) seller reputation/reviews. Features blue neon UI, saves search history, displays product images with clickable links.",
+  "architectural_notes": [
+    "Persian (Farsi) language UI with appropriate fonts for Iran",
+    "Priority ranking: 1) Price (lowest), 2) Geographic proximity (Qom/Tehran/Kashan/Arak regions first), 3) Seller reputation",
+    "Support APIs from Iranian e-commerce platforms (Digikala, Bamilo, etc.)",
+    "Image analysis for product identification using AI",
+    "Iran-accessible infrastructure (no filtered services)"
+  ],
+  "known_issues": [
+    "Direct access to Telegram, Eitaa, Instagram not possible - using public store APIs instead",
+    "Audio/video processing requires external services that may be filtered in Iran"
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-add-a-menu-section-in-the-ui-where-users-can-manually-input-original-store-links-urls-so-those-links-become-part-of-the-system-s-future-search-sources-store-these-custom-links-persistently-in-the-backend",
+      "title": "Add a menu section in the UI where users can manually input original store links (URLs) so those links become part of the system's future search sources. Store these custom links persistently in the backend.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-support-both-text-and-image-input-for-product-search-queries-display-appropriate-input-ui-elements-text-field-and-image-upload-icon-in-the-main-search-card",
+      "title": "Support both text and image input for product search queries. Display appropriate input UI elements (text field and image upload icon) in the main search card.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-test-the-frontend-searchinput-component-to-ensure-text-input-accepts-persian-characters-correctly-and-triggers-search-when-clicking-the-search-button-or-pressing-enter",
+      "title": "Test the frontend SearchInput component to ensure text input accepts Persian characters correctly and triggers search when clicking the search button or pressing Enter",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-test-the-productresults-component-to-verify-that-search-results-display-correctly-with-product-images-persian-titles-prices-in-toman-store-names-city-badges-reputation-stars-and-clickable-external-links",
+      "title": "Test the ProductResults component to verify that search results display correctly with product images, Persian titles, prices in Toman, store names, city badges, reputation stars, and clickable external links",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-test-the-storemanagement-component-to-ensure-users-can-add-new-stores-with-persian-names-and-urls-select-iranian-cities-from-the-dropdown-set-reputation-scores-and-delete-added-stores",
+      "title": "Test the StoreManagement component to ensure users can add new stores with Persian names and URLs, select Iranian cities from the dropdown, set reputation scores, and delete added stores",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-any-rtl-layout-issues-in-the-ui-where-text-alignment-spacing-or-component-positioning-does-not-correctly-support-right-to-left-persian-content",
+      "title": "Fix any RTL layout issues in the UI where text alignment, spacing, or component positioning does not correctly support right-to-left Persian content",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-any-issues-with-the-blue-neon-styling-theme-to-ensure-consistent-application-across-all-interactive-elements-including-buttons-input-fields-cards-and-hover-states",
+      "title": "Fix any issues with the blue neon styling theme to ensure consistent application across all interactive elements including buttons, input fields, cards, and hover states",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-verify-that-the-image-upload-functionality-in-searchinput-displays-the-upload-button-icon-correctly-and-shows-a-preview-when-an-image-is-selected-even-though-image-based-search-is-not-yet-implemented-in-the-backend",
+      "title": "Verify that the image upload functionality in SearchInput displays the upload button icon correctly and shows a preview when an image is selected, even though image-based search is not yet implemented in the backend",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-test-navigation-between-search-view-and-store-management-view-using-the-header-buttons-to-ensure-smooth-transitions-and-state-preservation",
+      "title": "Test navigation between Search view and Store Management view using the header buttons to ensure smooth transitions and state preservation",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Automatic product search across Iranian online stores with price comparison",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Manual link addition feature in menu to add custom store sources",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Text and image input support for product search queries",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Ranking algorithm: price (lowest first), location proximity (Qom/Tehran priority), then reputation/reviews",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Blue neon UI with Persian fonts, input card with text/image upload icons",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Search history with save/retrieve functionality",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Display product images alongside clickable store links in results",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Implement automatic product discovery that searches across Iranian online stores (Digikala, Bamilo, etc.) when user submits a text or image query. The system must fetch real product data including title, price, store name, product URL, and product image.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Implement ranking algorithm that sorts product results by: 1) lowest price first, 2) proximity to Qom/Tehran area, 3) seller reputation and customer reviews. Display the ranking logic clearly in results.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Test the searchByProductTitle functionality in the backend with various Persian product queries (e.g., 'گوشی موبایل', 'لپ‌تاپ', 'کتاب') and verify that results are returned with correct title, price, store name, and city information",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Smart Price Finder",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

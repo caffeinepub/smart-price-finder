@@ -1,0 +1,20 @@
+{
+  "backend/main.mo": "Main Motoko actor defining Product and Store types, city data for Iranian locations with proximity to Qom, product search by title, and seller management with hardcoded stores (Digikala, Bamilo, Hiper).",
+  "feature_evidence.json": "Feature evidence report documenting test requirements for SearchInput, ProductResults, StoreManagement components, RTL layout fixes, and blue neon styling consistency across the frontend.",
+  "frontend-file-summaries.txt": "JSON summary of frontend files describing App, Header, Footer, SearchInput, ProductResults, StoreManagement components, hooks, and styling with Persian/RTL support and blue neon theme.",
+  "frontend/index.css": "Tailwind CSS base styles with OKLCH color system defining CSS custom properties for light and dark themes, including sidebar, chart, and UI component color variables.",
+  "frontend/index.html": "HTML entry point for the React application with UTF-8 charset, viewport meta tag, and module script loading main.tsx.",
+  "frontend/src/App.tsx": "Root React component managing view state (search/stores), search results, QueryClient provider, ThemeProvider for dark mode, and rendering Header, SearchInput, ProductResults, StoreManagement, and Footer components with RTL layout.",
+  "frontend/src/components/Footer.tsx": "Footer component displaying copyright year, attribution link to caffeine.ai with UTM parameters, and heart icon, styled with Persian text and RTL layout.",
+  "frontend/src/components/Header.tsx": "Sticky header with logo, navigation buttons for search and store views, blue neon active state styling, and RTL layout support.",
+  "frontend/src/components/ProductResults.tsx": "Product grid component displaying search results with Persian price formatting, city proximity badges, reputation stars, product images with fallback, external links, loading state, and blue neon hover effects in RTL layout.",
+  "frontend/src/components/SearchInput.tsx": "React component providing a search interface with text input and image upload capabilities, using the useProductSearch hook to query products and display results with toast notifications.",
+  "frontend/src/components/StoreManagement.tsx": "React component for managing custom stores, allowing users to add/delete stores with details like name, URL, city (from predefined Iranian cities), and reputation score.",
+  "frontend/src/hooks/useActor.ts": "Custom React hook that creates and manages an authenticated or anonymous actor instance based on Internet Identity, invalidating dependent queries when the actor changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "React context provider and hook for Internet Identity authentication, managing login state, identity persistence, and AuthClient lifecycle with configurable options.",
+  "frontend/src/hooks/useProductSearch.ts": "Custom React hook that wraps the actor's searchByProductTitle method, managing search loading state and returning product results.",
+  "frontend/src/index.css": "Global CSS file defining Tailwind base styles, CSS variables for light/dark themes using OKLCH color space, RTL support for Persian text, and custom neon glow utilities.",
+  "frontend/src/main.tsx": "Application entry point that sets up React Query and Internet Identity providers, then renders the root App component.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration extending the default theme with custom colors using OKLCH, Persian font (Vazirmatn), neon shadow effects, and custom animations for accordions and glowing effects.",
+  "project_state.json": "Project state tracking for a Persian-language shopping search engine that aggregates products from Iranian e-commerce sites, ranking by price, proximity to Qom/Tehran, and seller reputation. Includes existing features for manual store link addition, text/image search input, RTL UI support, and various component tests."
+}

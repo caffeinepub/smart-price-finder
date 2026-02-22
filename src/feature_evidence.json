@@ -1,0 +1,154 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-test-the-frontend-searchinput-component-to-ensure-text-input-accepts-persian-characters-correctly-and-triggers-search-when-clicking-the-search-button-or-pressing-enter",
+      "featureTitle": "Test the frontend SearchInput component to ensure text input accepts Persian characters correctly and triggers search when clicking the search button or pressing Enter",
+      "files": [
+        "frontend/src/components/SearchInput.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-test-the-productresults-component-to-verify-that-search-results-display-correctly-with-product-images-persian-titles-prices-in-toman-store-names-city-badges-reputation-stars-and-clickable-external-links",
+      "featureTitle": "Test the ProductResults component to verify that search results display correctly with product images, Persian titles, prices in Toman, store names, city badges, reputation stars, and clickable external links",
+      "files": [
+        "frontend/src/components/ProductResults.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-test-the-storemanagement-component-to-ensure-users-can-add-new-stores-with-persian-names-and-urls-select-iranian-cities-from-the-dropdown-set-reputation-scores-and-delete-added-stores",
+      "featureTitle": "Test the StoreManagement component to ensure users can add new stores with Persian names and URLs, select Iranian cities from the dropdown, set reputation scores, and delete added stores",
+      "files": [
+        "frontend/src/components/StoreManagement.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-fix-any-rtl-layout-issues-in-the-ui-where-text-alignment-spacing-or-component-positioning-does-not-correctly-support-right-to-left-persian-content",
+      "featureTitle": "Fix any RTL layout issues in the UI where text alignment, spacing, or component positioning does not correctly support right-to-left Persian content",
+      "files": [
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/ProductResults.tsx",
+        "frontend/src/components/SearchInput.tsx",
+        "frontend/src/components/StoreManagement.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-fix-any-issues-with-the-blue-neon-styling-theme-to-ensure-consistent-application-across-all-interactive-elements-including-buttons-input-fields-cards-and-hover-states",
+      "featureTitle": "Fix any issues with the blue neon styling theme to ensure consistent application across all interactive elements including buttons, input fields, cards, and hover states",
+      "files": [
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/ProductResults.tsx",
+        "frontend/src/components/SearchInput.tsx",
+        "frontend/src/components/StoreManagement.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-verify-that-the-image-upload-functionality-in-searchinput-displays-the-upload-button-icon-correctly-and-shows-a-preview-when-an-image-is-selected-even-though-image-based-search-is-not-yet-implemented-in-the-backend",
+      "featureTitle": "Verify that the image upload functionality in SearchInput displays the upload button icon correctly and shows a preview when an image is selected, even though image-based search is not yet implemented in the backend",
+      "files": [
+        "frontend/src/components/SearchInput.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-test-navigation-between-search-view-and-store-management-view-using-the-header-buttons-to-ensure-smooth-transitions-and-state-preservation",
+      "featureTitle": "Test navigation between Search view and Store Management view using the header buttons to ensure smooth transitions and state preservation",
+      "files": [
+        "frontend/src/components/Header.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
